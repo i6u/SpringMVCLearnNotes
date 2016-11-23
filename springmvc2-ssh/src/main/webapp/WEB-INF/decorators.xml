@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/WEB-INF/layout">
+    <!--排除不需要装饰的资源文件-->
     <excludes>
         <pattern>*/ajax/*</pattern>
         <pattern>*.js</pattern>
@@ -9,7 +10,11 @@
         <pattern>/test/*</pattern>
         <pattern>/static/*</pattern>
     </excludes>
+    <!--配置/user/*请求，都使用base.jsp页面模板-->
     <decorator name="basic" page="base.jsp">
-        <pattern>/*</pattern>
+        <pattern>/user/*</pattern>
     </decorator>
+
+    <!--配置name为readme模板提供给其他页面（例子：index.jsp）使用，模板页面为main.jsp，-->
+    <decorator name="readme" page="main.jsp"/>
 </decorators>

@@ -17,6 +17,11 @@ model中涉及到的方法和需要注意的地方
 > 使用ThreadLocal+page-taglib实现分页，使用sitemesh实现布局
 
 * sitemesh使用
+    - 添加`sitemesh`依赖
+    - 在`web.xml`配置`com.opensymphony.sitemesh.webapp.SiteMeshFilter`过滤器
+    - 在`WEB-INF`添加`decorators.xml`配置文件
+    - 创建模板`jsp`页面，页面导入`<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>`
+    - 在`decorators.xml`中配置需要处理的页面，以及使用的模板
 
 
 
