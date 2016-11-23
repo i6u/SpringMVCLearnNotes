@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layout">
+    <excludes>
+        <pattern>*/ajax/*</pattern>
+        <pattern>*.js</pattern>
+        <pattern>*.css</pattern>
+        <pattern>*.html</pattern>
+        <pattern>*.jws</pattern>
+        <pattern>/test/*</pattern>
+        <pattern>/static/*</pattern>
+    </excludes>
+    <decorator name="basic" page="base.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
