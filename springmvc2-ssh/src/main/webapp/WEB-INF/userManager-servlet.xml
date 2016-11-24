@@ -14,7 +14,8 @@
     </bean>
     <!--处理资源文件,location本地资源文件目录，mapping映射资源文件目录-->
     <mvc:resources location="/static/" mapping="/static/**"/>
-
+    <mvc:resources location="/upload/" mapping="/upload/**"/>
+    <mvc:view-controller path="/" view-name="index"/>
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>

@@ -11,10 +11,12 @@ import org.springframework.web.multipart.MultipartFile;
 import zyr.learn.springmvc.exception.UserException;
 import zyr.learn.springmvc.model.User;
 import zyr.learn.springmvc.service.IUserService;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * Created by zhouweitao on 2016/11/22.
@@ -47,32 +49,30 @@ public class UserController {
     }
 
     /**
-     *
      * spring mvc中使用@Validated
-     *
-     *
+     * <p>
+     * <p>
      * 当需要一次上传多个文件的时候，需要使用@RequestParam对参数进行声明，不然回报NoSuchMethodException异常，应为参数使用了数组，spring不能自动进行转换
-     * */
+     */
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(@Validated User user, BindingResult br, @RequestParam MultipartFile[] attachs, HttpServletRequest request) throws IOException {
+    public String add(@Validated User user, BindingResult br, @RequestParam MultipartFile attach, HttpServletRequest request) throws IOException {
         if (br.hasErrors()) {
             return "user/add";
         } else {
-            String realPath = request.getSession().getServletContext().getRealPath("/upload");
-            for (MultipartFile attach : attachs) {
-                if (attach.isEmpty()) continue;
-                File file = new File(realPath + "/" + attach.getOriginalFilename());
-                FileUtils.copyInputStreamToFile(attach.getInputStream(), file);
-            }
+            String realPath = request.getSession().getServletContext().getRealPath("/upload/");
+            String oldName = attach.getOriginalFilename();
+            String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
+            File file = new File(realPath + newName);
+            FileUtils.copyInputStreamToFile(attach.getInputStream(), file);
+            user.setPic(newName);
             userService.create(user);
             return "redirect:list";
         }
     }
 
     /**
-     *
      * spring mvc中使用@PathVariable使参数可以作为请求地址的一部分
-     * */
+     */
     @RequestMapping(value = "/{uid}", method = RequestMethod.GET)
     public String show(@PathVariable String uid, Model model) {
         model.addAttribute(userService.queryById(uid));
@@ -123,5 +123,6 @@ public class UserController {
         }
         return "redirect:/user/list";
     }
+
 
 }

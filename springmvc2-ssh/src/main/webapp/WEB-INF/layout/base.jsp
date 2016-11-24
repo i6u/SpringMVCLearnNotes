@@ -43,7 +43,7 @@
 
 <body class="base">
 
-<div class="baseDiv"><h3>学生管理系统</h3>
+<div class="baseDiv"><h3><a href="<%=cont%>/">学生管理系统</a></h3>
 
     <nav>
         <a href="<%=cont%>/user/add">学生添加</a>

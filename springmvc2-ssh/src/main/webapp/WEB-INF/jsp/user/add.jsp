@@ -18,7 +18,7 @@
     <form:input path="username"/><form:errors path="username"/> <br/>
     <form:password path="password"/><form:errors path="password"/><br/>
     <form:input path="email"/><form:errors path="email"/><br/>
-        <input type="file" name="attachs"><br/>
+        <input type="file" name="attach"><br/>
     <input type="submit" value="add user" style="width: 100px;margin-top: 15px"/><br/>
 </fieldset>
 </form:form>

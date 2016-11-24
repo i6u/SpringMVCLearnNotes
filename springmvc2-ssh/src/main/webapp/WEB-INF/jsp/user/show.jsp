@@ -14,5 +14,6 @@
 username:${user.username}<br/>
 password:${user.password}<br/>
 email:${user.email}<br/>
+pic:${user.pic}<br/>
 </body>
 </html>
