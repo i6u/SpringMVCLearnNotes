@@ -30,3 +30,5 @@ model中涉及到的方法和需要注意的地方
 > 这里在Properties中添加一个参数archetypeCatalog=internal，不加这个参数，在maven生成骨架的时候将会非常慢，有时候会直接卡住。
   来自网上的解释：
   archetypeCatalog表示插件使用的archetype元数据，不加这个参数时默认为remote，local，即中央仓库archetype元数据，由于中央仓库的archetype太多了，所以导致很慢，指定internal来表示仅使用内部元数据。
+  
+  > 我也不知道当时写完之后有没有 push 上来，反正项目有问题，写了半年 android 了，spring 有点忘了。。。sorry 啦
